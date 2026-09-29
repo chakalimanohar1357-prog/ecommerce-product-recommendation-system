@@ -106,6 +106,6 @@ you make manual changes to the schema while the app is running, you can remove
 
 ## Author
 
-**Shanaboina Nivas**  
+**Chakali Manohar**  
 B.Tech CSE (AI & ML)  
 St. Martin's Engineering College
