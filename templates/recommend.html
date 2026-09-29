@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Details</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <!-- LOGO -->
+    <div class="nav-left">
+        <span class="logo">🛒 ShopEasy</span>
+    </div>
+
+    <!-- SEARCH BAR -->
+    <div class="nav-center">
+        <input type="text"
+        placeholder="Search for products..."
+        class="search-bar">
+
+        <button class="search-btn">
+            Search
+        </button>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="nav-right">
+
+        <a href="/home">Home</a>
+
+        <a href="/cart">Cart 🛒</a>
+
+        <a href="/logout">Logout</a>
+
+    </div>
+
+</div>
+
+
+<!-- PRODUCT DETAILS -->
+{% if product is defined %}
+
+<div style="max-width:1100px;margin:40px auto;display:flex;gap:40px;align-items:center;">
+
+    <!-- PRODUCT IMAGE -->
+    <div>
+        <img 
+        src="{{ url_for('static', filename='images/' + product.image) }}"
+        width="350"
+        onerror="this.src='/static/images/placeholder.svg'">
+    </div>
+
+    <!-- PRODUCT INFO -->
+    <div>
+
+        <h2>{{ product.name }}</h2>
+
+        <h3 style="color:green;">
+            ₹{{ product.price }}
+        </h3>
+
+        <p>
+            ⭐ Rating: {{ product.rating }}
+        </p>
+
+        <p>
+            🎨 Color: {{ product.color }}
+        </p>
+
+        <p>
+            {{ product.description }}
+        </p>
+
+        <br>
+
+        <a href="/add_to_cart/{{ product.product_id }}">
+            <button style="padding:12px 25px;background:#ff9800;border:none;color:white;font-size:16px;border-radius:5px;">
+                Add to Cart
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+
+<h2 style="text-align:center;">Recommended Products</h2>
+
+
+<!-- SIMILAR PRODUCTS -->
+<div style="max-width:1200px;margin:0 auto;padding:20px;">
+
+<h3>Similar Products ({{ similar|length }})</h3>
+
+<div class="product-grid">
+
+{% for product in similar %}
+
+<div class="product-card">
+
+<img src="{{ url_for('static', filename='images/' + product.image) }}"
+onerror="this.src='/static/images/placeholder.svg'">
+
+<h3>{{ product.name }}</h3>
+
+<p>₹{{ product.price }}</p>
+
+<a href="/view/{{ product.product_id }}">
+<button>View</button>
+</a>
+
+<a href="/add_to_cart/{{ product.product_id }}">
+<button>Add to Cart</button>
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+<!-- ACCESSORIES -->
+<h3 style="margin-top:30px;">Accessories ({{ accessories|length }})</h3>
+
+<div class="product-grid">
+
+{% for product in accessories %}
+
+<div class="product-card">
+
+<img src="{{ url_for('static', filename='images/' + product.image) }}"
+onerror="this.src='/static/images/placeholder.svg'">
+
+<h3>{{ product.name }}</h3>
+
+<p>₹{{ product.price }}</p>
+
+<a href="/view/{{ product.product_id }}">
+<button>View</button>
+</a>
+
+<a href="/add_to_cart/{{ product.product_id }}">
+<button>Add to Cart</button>
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+<!-- SAME PRICE -->
+<h3 style="margin-top:30px;">Same Price Products ({{ same_price|length }})</h3>
+
+<div class="product-grid">
+
+{% for product in same_price %}
+
+<div class="product-card">
+
+<img src="{{ url_for('static', filename='images/' + product.image) }}"
+onerror="this.src='/static/images/placeholder.svg'">
+
+<h3>{{ product.name }}</h3>
+
+<p>₹{{ product.price }}</p>
+
+<a href="/view/{{ product.product_id }}">
+<button>View</button>
+</a>
+
+<a href="/add_to_cart/{{ product.product_id }}">
+<button>Add to Cart</button>
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .payment-box { max-width:720px;margin:80px auto;background:white;padding:20px;border-radius:8px;border:1px solid #e2e8f0; }
+        .method { padding:10px;border:1px solid #eee;border-radius:6px;margin-bottom:8px; }
+    </style>
+</head>
+<body>
+
+<div class="navbar"><div class="nav-left"><span class="logo">🛒 ShopEasy</span></div><div class="nav-center"></div><div class="nav-right"><a href="/home">Home</a><a href="/cart">Cart</a></div></div>
+
+<div class="payment-box">
+    <h2>Payment</h2>
+
+    <h3>Order Summary</h3>
+    <ul>
+        {% for item in items %}
+        <li>{{ item.name }} — ₹{{ item.price }}</li>
+        {% endfor %}
+    </ul>
+    <p><strong>Total: ₹{{ total }}</strong></p>
+
+    <h3>Shipping Address</h3>
+    <p>{{ address.address_line1 }}{% if address.address_line2 %}, {{ address.address_line2 }}{% endif %}<br>{{ address.city }}, {{ address.state }} — {{ address.postal_code }}<br>{{ address.country }}</p>
+
+    <h3>Select Payment Method</h3>
+    <form action="/place_order" method="post">
+        <!-- Pass through address and items as hidden fields -->
+        <input type="hidden" name="address_line1" value="{{ address.address_line1 }}">
+        <input type="hidden" name="address_line2" value="{{ address.address_line2 }}">
+        <input type="hidden" name="city" value="{{ address.city }}">
+        <input type="hidden" name="state" value="{{ address.state }}">
+        <input type="hidden" name="postal_code" value="{{ address.postal_code }}">
+        <input type="hidden" name="country" value="{{ address.country }}">
+        {% if selected_address_id %}
+        <input type="hidden" name="selected_address_id" value="{{ selected_address_id }}">
+        {% endif %}
+        <input type="hidden" name="save_address" value="{{ save_address or '' }}">
+        <input type="hidden" name="address_label" value="{{ address_label or '' }}">
+
+        <label class="method"><input type="radio" name="payment_method" value="card" checked> Credit/Debit Card</label>
+        <div style="margin-left:16px;margin-bottom:8px;">
+            <input name="card_number" placeholder="Card number" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" />
+        </div>
+
+        <label class="method"><input type="radio" name="payment_method" value="upi"> UPI</label>
+        <div style="margin-left:16px;margin-bottom:8px;">
+            <input name="upi_id" placeholder="your@upi" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" />
+        </div>
+
+        <label class="method"><input type="radio" name="payment_method" value="cod"> Cash on Delivery (COD)</label>
+
+        <div style="text-align:center;margin-top:16px;">
+            <button type="submit" class="checkout-btn">Pay / Place Order</button>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

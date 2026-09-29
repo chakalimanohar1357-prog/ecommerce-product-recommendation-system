@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Search results</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR (reuse snippet from other templates) -->
+<div class="navbar">
+    <div class="nav-left">
+        <span class="logo">🛒 ShopEasy</span>
+    </div>
+    <div class="nav-center">
+        <form action="/search" method="get">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for products..." class="search-bar">
+            <button class="search-btn" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="nav-right">
+        <span class="welcome">
+            Hello, {{ username }}
+        </span>
+        <a href="/cart">Cart 🛒 ({{ cart_count }})</a>
+        <a href="/recommend">Recommended</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<h2 style="text-align:center;">Search results for "{{ query }}"</h2>
+<p style="text-align:center;">{{ count }} product{{ '' if count==1 else 's' }} found</p>
+
+<div class="product-grid">
+    {% for product in results %}
+    <div class="product-card">
+        <div class="product-image">
+            <img src="{{ url_for('static', filename='images/' + product.image) }}"
+                 alt="{{ product.name }}" onerror="this.src='/static/images/placeholder.jpg'">
+            <div class="product-overlay">
+                <a href="/view/{{ product.product_id }}" class="view-btn">View Details</a>
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">{{ product.name }}</h3>
+            <p class="product-category">{{ product.category|title }}</p>
+            <div class="product-price">
+                <span class="price">₹{{ product.price }}</span>
+            </div>
+            <a href="/add_to_cart/{{ product.product_id }}" class="add-to-cart-btn">Add to Cart</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

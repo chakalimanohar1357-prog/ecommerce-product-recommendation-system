@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>ShopEasy Login</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <!-- LOGO -->
+    <div class="nav-left">
+        <span class="logo">🛒 ShopEasy</span>
+    </div>
+
+
+    <!-- SEARCH BAR -->
+    <div class="nav-center">
+
+        <input type="text"
+        placeholder="Search for products..."
+        class="search-bar">
+
+        <button class="search-btn">
+            Search
+        </button>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="nav-right">
+
+        <a href="/register">
+            Register
+        </a>
+
+    </div>
+
+</div>
+
+<div class="auth-container">
+
+<div class="auth-box">
+
+<h1>🛒 ShopEasy</h1>
+
+<h2>Welcome Back!</h2>
+
+<p>Please sign in to your account</p>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for message in messages %}
+        <div class="flash-message error">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<form method="POST">
+
+<div class="input-group">
+    <label for="username">👤 Username</label>
+    <input type="text"
+    id="username"
+    name="username"
+    placeholder="Enter your username"
+    required>
+</div>
+
+<div class="input-group">
+    <label for="password">🔒 Password</label>
+    <input type="password"
+    id="password"
+    name="password"
+    placeholder="Enter your password"
+    required>
+</div>
+
+<button type="submit" class="login-btn">
+    🚀 Login
+</button>
+
+</form>
+
+<div class="auth-links">
+    <a href="/register">Create New Account</a>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

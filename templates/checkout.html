@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Checkout</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <!-- LOGO -->
+    <div class="nav-left">
+        <span class="logo">🛒 ShopEasy</span>
+    </div>
+
+
+    <!-- SEARCH BAR -->
+    <div class="nav-center">
+
+        <input type="text"
+        placeholder="Search for products..."
+        class="search-bar">
+
+        <button class="search-btn">
+            Search
+        </button>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="nav-right">
+
+        <a href="/home">
+            Home
+        </a>
+
+        <a href="/cart">
+            Cart 🛒
+        </a>
+
+        <a href="/recommend">
+            Recommended
+        </a>
+
+        <a href="/logout">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+<h2 style="text-align:center;">Checkout</h2>
+
+<div class="product-grid">
+
+{% for product in cart %}
+
+<div class="product-card">
+
+<img src="{{ url_for('static', filename='images/' + product.image) }}">
+
+<h3>{{product.name}}</h3>
+
+<p>₹{{ product.price }}</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<h2 style="text-align:center;">Total: ₹{{ total }}</h2>
+
+<div style="max-width:700px;margin:30px auto;background:white;padding:20px;border-radius:8px;">
+    <h3>Shipping Address</h3>
+    <form action="/payment" method="post">
+
+        {% if addresses %}
+        <div style="margin-bottom:12px;">
+            <strong>Saved addresses</strong>
+            <div style="margin-top:6px;">
+                {% for addr in addresses %}
+                <label style="display:block;padding:8px;border:1px solid #eee;border-radius:6px;margin-bottom:6px;">
+                    <input type="radio" name="selected_address_id" value="{{ addr.id }}"> <strong>{{ addr.label or 'Saved Address' }}</strong>
+                    <div style="font-size:0.9rem;color:#4a5568;">{{ addr.address_line1 }}{% if addr.address_line2 %}, {{ addr.address_line2 }}{% endif %}, {{ addr.city }}, {{ addr.state }} — {{ addr.postal_code }}, {{ addr.country }}</div>
+                </label>
+                {% endfor %}
+                <label style="display:block;padding:8px;border:1px solid #eee;border-radius:6px;">
+                    <input type="radio" name="selected_address_id" value=""> Use a different address below
+                </label>
+            </div>
+        </div>
+        {% endif %}
+
+        <div style="margin-bottom:8px;">
+            <input name="address_line1" placeholder="Address line 1" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" />
+        </div>
+        <div style="margin-bottom:8px;">
+            <input name="address_line2" placeholder="Address line 2 (optional)" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;" />
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:8px;">
+            <input name="city" placeholder="City" required style="flex:1;padding:8px;border:1px solid #ddd;border-radius:4px;" />
+            <input name="state" placeholder="State" required style="flex:1;padding:8px;border:1px solid #ddd;border-radius:4px;" />
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:8px;">
+            <input name="postal_code" placeholder="Postal Code" required style="flex:1;padding:8px;border:1px solid #ddd;border-radius:4px;" />
+            <input name="country" placeholder="Country" required style="flex:1;padding:8px;border:1px solid #ddd;border-radius:4px;" />
+        </div>
+
+        <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
+            <label style="display:flex;align-items:center;gap:8px;margin-left:0;">
+                <input type="checkbox" name="save_address"> Save this address
+            </label>
+            <input name="address_label" placeholder="Label for saved address (Home, Work)" style="flex:1;padding:8px;border:1px solid #ddd;border-radius:4px;" />
+        </div>
+
+        <div style="text-align:center;margin-top:16px;">
+            <button type="submit" class="checkout-btn">Place Order</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

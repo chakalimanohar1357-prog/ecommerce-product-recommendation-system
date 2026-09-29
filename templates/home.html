@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ShopEasy - Online Shopping</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+<div class="nav-left">
+<span class="logo">🛒 ShopEasy</span>
+</div>
+
+<div class="nav-center">
+<form action="/search" method="get" style="display:flex;">
+<input type="text" name="q"
+placeholder="Search for products..."
+class="search-bar">
+
+<button class="search-btn" type="submit">
+Search
+</button>
+</form>
+</div>
+
+<div class="nav-right">
+
+<span class="welcome">
+Hello, {{ username }}
+</span>
+
+<a href="/cart">
+Cart 🛒 ({{ cart_count }})
+</a>
+
+<a href="/recommend">
+Recommended
+</a>
+
+<a href="/logout">
+Logout
+</a>
+
+</div>
+
+</div>
+
+
+<!-- HERO -->
+<div class="hero-banner">
+
+<div class="hero-content">
+
+<h1>Welcome to <span class="brand">ShopEasy</span></h1>
+
+<p>Your smart shopping partner powered by AI recommendations</p>
+
+<a href="#products" class="cta-button">Start Shopping</a>
+
+</div>
+
+</div>
+
+
+<!-- ALL PRODUCTS -->
+<section class="products-section">
+
+<h2 style="text-align:center;">All Products</h2>
+
+<p style="text-align:center;">
+Total {{ product_count }} products available
+</p>
+
+<div class="product-grid">
+
+{% for product in products %}
+
+<div class="product-card">
+
+<img src="{{ url_for('static', filename='images/' + product.image) }}"
+width="200"
+onerror="this.src='/static/images/placeholder.svg'">
+
+<h3>{{ product.name }}</h3>
+
+<p>{{ product.category }}</p>
+
+<p style="color:green;">
+₹{{ product.price }}
+</p>
+
+<a href="/view/{{ product.product_id }}">
+<button>View</button>
+</a>
+
+<a href="/add_to_cart/{{ product.product_id }}">
+<button>Add to Cart</button>
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+
+<!-- RECOMMENDED -->
+{% if recommended %}
+
+<section id="products" class="products-section"></section>
+
+<h2 style="text-align:center;">
+Recommended for You
+</h2>
+
+<div class="product-grid">
+
+{% for product in recommended %}
+
+<div class="product-card">
+
+<img src="{{ url_for('static', filename='images/' + product.image) }}"
+width="200"
+onerror="this.src='/static/images/placeholder.svg'">
+
+<h3>{{ product.name }}</h3>
+
+<p>{{ product.category }}</p>
+
+<p style="color:green;">
+₹{{ product.price }}
+</p>
+
+<a href="/view/{{ product.product_id }}">
+<button>View</button>
+</a>
+
+<a href="/add_to_cart/{{ product.product_id }}">
+<button>Add to Cart</button>
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+{% endif %}
+
+</body>
+</html>

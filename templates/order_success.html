@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Order Success</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <!-- LOGO -->
+    <div class="nav-left">
+        <span class="logo">🛒 ShopEasy</span>
+    </div>
+
+
+    <!-- SEARCH BAR -->
+    <div class="nav-center">
+
+        <input type="text"
+        placeholder="Search for products..."
+        class="search-bar">
+
+        <button class="search-btn">
+            Search
+        </button>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="nav-right">
+
+        <a href="/home">
+            Home
+        </a>
+
+        <a href="/cart">
+            Cart 🛒
+        </a>
+
+        <a href="/recommend">
+            Recommended
+        </a>
+
+        <a href="/logout">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+<div style="text-align:center; margin-top:100px;">
+
+<div style="max-width:800px;margin:80px auto;background:white;padding:24px;border-radius:8px;text-align:left;">
+    <h1>✅ Order Placed Successfully!</h1>
+
+    {% if order_id %}
+    <p><strong>Order ID:</strong> {{ order_id }}</p>
+    {% endif %}
+
+    <h3>Items</h3>
+    <ul>
+        {% for item in items %}
+        <li>{{ item.name }} — ₹{{ item.price }}</li>
+        {% endfor %}
+    </ul>
+
+    <p><strong>Total:</strong> ₹{{ total }}</p>
+
+    <h3>Shipping Address</h3>
+    <p>
+        {{ address.address_line1 }}<br>
+        {% if address.address_line2 %}{{ address.address_line2 }}<br>{% endif %}
+        {{ address.city }}, {{ address.state }} — {{ address.postal_code }}<br>
+        {{ address.country }}
+    </p>
+
+    <div style="text-align:center;margin-top:16px;">
+        <a href="/home"><button>Continue Shopping</button></a>
+    </div>
+
+</div>
+
+</body>
+</html>

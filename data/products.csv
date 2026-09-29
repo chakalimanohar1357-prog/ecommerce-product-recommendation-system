@@ -1,0 +1,66 @@
+product_id,name,category,price,image
+1,iPhone 17,phone,136000,iphone.jpg
+2,Samsung Galaxy S21,phone,55000,samsung.jpg
+3,OnePlus 11,phone,50000,oneplus.jpg
+4,Realme Narzo,phone,20000,realme.jpg
+5,Phone Cover,accessory,500,cover.jpg
+6,Earphones,accessory,1500,earphones.jpg
+7,Charger,accessory,1200,charger.jpg
+8,Running Shoes,shoes,3000,shoes.jpg
+9,Formal Dress Shirt,shirt,1500,shirt.jpg
+10,Casual T-Shirt,shirt,500,tshirt.jpg
+11,Jeans Pants,pants,2000,jeans.jpg
+12,Sports Watch,accessory,800,watch.jpg
+13,Leather Belt,accessory,1200,belt.jpg
+14,Summer Hat,accessory,700,hat.jpg
+15,Backpack,bags,2500,backpack.jpg
+16,Google Pixel 8,phone,65000,pixel.jpg
+17,Motorola Edge 40,phone,42000,motorola.jpg
+18,Nothing Phone 2,phone,45000,nothing.jpg
+19,Vivo V29,phone,32000,vivo.jpg
+20,Oppo Reno 10,phone,34000,oppo.jpg
+21,Wireless Charger,accessory,1800,wireless_charger.jpg
+22,Bluetooth Speaker,accessory,2500,speaker.jpg
+23,Power Bank 20000mAh,accessory,2200,powerbank.jpg
+24,USB Type-C Cable,accessory,400,cable.jpg
+25,Gaming Headset,accessory,3000,headset.jpg
+26,Smart Fitness Band,accessory,2000,fitnessband.jpg
+27,Men Running Shoes,shoes,3500,runshoes.jpg
+28,Women Running Shoes,shoes,3200,womenshoes.jpg
+29,Sneakers White,shoes,2800,sneakers.jpg
+30,Formal Leather Shoes,shoes,4000,formalshoes.jpg
+31,Cotton Casual Shirt,shirt,1300,casualshirt.jpg
+32,Checked Shirt,shirt,1500,checkedshirt.jpg
+33,Denim Shirt,shirt,1700,denimshirt.jpg
+34,Graphic Printed T-Shirt,shirt,700,graphictee.jpg
+35,Polo T-Shirt,shirt,900,polo.jpg
+36,Slim Fit Jeans,pants,2200,slimjeans.jpg
+37,Black Denim Jeans,pants,2100,blackjeans.jpg
+38,Jogger Pants,pants,1800,joggers.jpg
+39,Track Pants,pants,1600,trackpants.jpg
+40,Leather Wallet,accessory,900,wallet.jpg
+41,Smart Watch Pro,accessory,4500,smartwatch.jpg
+42,Digital Watch,accessory,2000,digitalwatch.jpg
+43,Sunglasses UV,accessory,1200,sunglasses.jpg
+44,Travel Backpack,bags,2800,travelbag.jpg
+45,Laptop Backpack,bags,3200,laptopbag.jpg
+46,Gym Duffel Bag,bags,2500,gymbag.jpg
+47,Mini Shoulder Bag,bags,1800,shoulderbag.jpg
+48,Cap Classic,accessory,600,cap.jpg
+49,Wool Winter Cap,accessory,800,woolcap.jpg
+50,Beanie Hat,accessory,700,beanie.jpg
+51,Wireless Mouse,accessory,1200,mouse.jpg
+52,Mechanical Keyboard,accessory,3500,keyboard.jpg
+53,USB Hub,accessory,900,usbhub.jpg
+54,Laptop Cooling Pad,accessory,1500,coolingpad.jpg
+55,Portable SSD 1TB,accessory,8500,ssd.jpg
+56,External Hard Drive 2TB,accessory,7500,hdd.jpg
+57,Tablet Android,tablet,25000,tablet.jpg
+58,iPad Mini,tablet,48000,ipad.jpg
+59,Smart LED TV 43inch,tv,35000,tv43.jpg
+60,Smart LED TV 55inch,tv,52000,tv55.jpg
+61,Home Theater System,electronics,12000,hometheater.jpg
+62,Portable Projector,electronics,18000,projector.jpg
+63,DSLR Camera,camera,65000,camera.jpg
+64,Action Camera,camera,22000,actioncam.jpg
+65,Tripod Stand,accessory,1500,tripod.jpg
